@@ -23,8 +23,8 @@ public class Departments {
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
-    @JoinColumn(name="departments_name",unique = true,nullable = false)
-    private List<Students> students= new ArrayList<>();
+    @JoinColumn(name="departments_name")
+    private List<Students> studentsList= new ArrayList<>();
 
 
     public Departments() {
@@ -36,7 +36,7 @@ public class Departments {
 
     public Departments(String name, List<Students> students) {
         this.name = name;
-        this.students = students;
+        this.studentsList = students;
     }
 
     public Departments(int id, String name) {
@@ -53,11 +53,11 @@ public class Departments {
     }
 
     public List<Students> getStudents() {
-        return students;
+        return studentsList;
     }
 
-    public void addStudents(List<Students> students) {
+    public void addStudents(Students student) {
 
-        this.students=students;
+        this.studentsList.add(student);
     }
 }

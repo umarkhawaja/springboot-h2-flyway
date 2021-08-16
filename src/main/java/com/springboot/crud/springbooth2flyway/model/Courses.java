@@ -8,6 +8,8 @@ import java.util.List;
 @Table(name = "courses")
 public class Courses {
 
+
+
     @Id
     @Column(name="id",unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "C_ID")
@@ -17,8 +19,11 @@ public class Courses {
     @Column(name = "name",unique = true,nullable = false)
     private String name;
 
-    @ManyToMany(mappedBy= "courses" )
-    private List<Students> students = new ArrayList<>();
+    @ManyToOne
+    private Students student = new Students();
+
+    public Courses() {
+    }
 
     public Courses(String name) {
         this.name = name;
@@ -37,12 +42,9 @@ public class Courses {
         return name;
     }
 
-    public List<Students> getStudents() {
-        return students;
+    public Students getStudents() {
+        return student;
     }
 
-    public void registerStudent(Students student){
-        students.add(student);
-    }
 
 }

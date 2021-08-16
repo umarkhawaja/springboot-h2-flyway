@@ -1,6 +1,5 @@
 package com.springboot.crud.springbooth2flyway.model;
 
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
@@ -26,9 +25,6 @@ public class Students {
     @Column(name = "date_of_birth")
     private Date dateOfBirth;
 
-    @Column(name = "departments_name")
-    private String departmentsName;
-
     @ManyToMany
     @JoinTable(
             name = "students_courses",
@@ -42,13 +38,12 @@ public class Students {
 
     public Students(@JsonProperty("first_name") String firstName,
                     @JsonProperty("age") int age,
-                    @JsonProperty("date_of_birth") Date dateOfBirth,
-                    @JsonProperty("departments_name") String departmentsName)
+                    @JsonProperty("date_of_birth") Date dateOfBirth
+    )
     {
         this.firstName = firstName;
         this.age = age;
         this.dateOfBirth = dateOfBirth;
-        this.departmentsName=departmentsName;
 
     }
 
@@ -68,9 +63,6 @@ public class Students {
         return dateOfBirth;
     }
 
-    public String getDepartmentsName() {
-        return departmentsName;
-    }
 
     public List<Courses> getCourses() {
         return courses;

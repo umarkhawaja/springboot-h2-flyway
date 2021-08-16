@@ -2,7 +2,7 @@
 
 CREATE TABLE departments(
     Id INT PRIMARY KEY AUTO_INCREMENT,
-    Name VARCHAR(250) NOT NULL
+    Name VARCHAR(250) Not Null
        );
 
 CREATE TABLE students(
@@ -10,7 +10,7 @@ CREATE TABLE students(
     first_name VARCHAR(250) NOT NULL,
     age INT NOT NULL,
     date_of_birth DATE NOT NULL,
-    departments_name VARCHAR(250) NOT NULL,
+    departments_name VARCHAR(250),
     CONSTRAINT COMMAND_ACTION_FK FOREIGN KEY (departments_name) references departments(Name)
 
   );

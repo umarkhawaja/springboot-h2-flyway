@@ -7,20 +7,18 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class StudentService {
 
     private StudentsDao studentsDao;
-
     @Autowired
     public StudentService(@Qualifier("studentDao") StudentsDao studentsDao) {
         this.studentsDao = studentsDao;
     }
 
-    public int addStudent(Students students){
 
+    public int addStudent(Students students){
         return studentsDao.insertStudent(students);
     }
 

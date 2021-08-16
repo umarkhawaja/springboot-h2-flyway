@@ -2,7 +2,6 @@ package com.springboot.crud.springbooth2flyway.dao;
 
 import com.springboot.crud.springbooth2flyway.model.Students;
 import org.springframework.stereotype.Repository;
-
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
@@ -14,7 +13,6 @@ import java.util.List;
 public class StudentDataAccessService implements StudentsDao{
 
     EntityManager entityManager;
-
     public StudentDataAccessService(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
@@ -27,7 +25,6 @@ public class StudentDataAccessService implements StudentsDao{
 
     @Override
     public int insertStudent(Students student) {
-
         entityManager.persist(student);
         return 1;
     }
@@ -35,6 +32,7 @@ public class StudentDataAccessService implements StudentsDao{
     @Override
     public List<Students> getAllStudents() {
         setStudentsList(entityManager.createQuery("SELECT a FROM Students a", Students.class).getResultList());
+
         return entityManager.createQuery("SELECT a FROM Students a", Students.class).getResultList();
     }
 
